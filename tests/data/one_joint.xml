@@ -1,0 +1,18 @@
+<mujoco model="runtime_test">
+  <option timestep="0.002" gravity="0 0 0"/>
+  <worldbody>
+    <site name="depth_camera" pos="0 0 1"/>
+    <body>
+      <joint name="joint" type="hinge" axis="0 0 1" damping="1"/>
+      <geom type="sphere" size=".1" mass="1"/>
+    </body>
+  </worldbody>
+  <actuator><motor name="motor" joint="joint" gear="1"/></actuator>
+  <sensor>
+    <jointpos name="joint_p" joint="joint"/>
+    <jointvel name="joint_v" joint="joint"/>
+    <actuatorpos name="motor_p" actuator="motor"/>
+    <actuatorvel name="motor_v" actuator="motor"/>
+    <actuatorfrc name="motor_t" actuator="motor"/>
+  </sensor>
+</mujoco>

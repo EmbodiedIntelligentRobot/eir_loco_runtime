@@ -1,0 +1,20 @@
+<mujoco model="suspension_release">
+  <option timestep="0.002" gravity="0 0 -9.81"/>
+  <worldbody>
+    <body pos="0 0 2">
+      <joint name="x" type="slide" axis="1 0 0"/>
+      <joint name="y" type="slide" axis="0 1 0"/>
+      <joint name="joint" type="slide" axis="0 0 1"/>
+      <joint name="rotation" type="ball"/>
+      <geom type="sphere" size=".1" mass="1"/>
+    </body>
+  </worldbody>
+  <actuator><motor name="motor" joint="joint" gear="1"/></actuator>
+  <sensor>
+    <jointpos name="joint_p" joint="joint"/>
+    <jointvel name="joint_v" joint="joint"/>
+    <actuatorpos name="motor_p" actuator="motor"/>
+    <actuatorvel name="motor_v" actuator="motor"/>
+    <actuatorfrc name="motor_t" actuator="motor"/>
+  </sensor>
+</mujoco>
